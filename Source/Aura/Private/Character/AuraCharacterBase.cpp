@@ -12,12 +12,26 @@ AAuraCharacterBase::AAuraCharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+UAbilitySystemComponent* AAuraCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 void AAuraCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();	
 
 }
 
+void AAuraCharacterBase::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+}
+
+void AAuraCharacterBase::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+}
 //void AAuraCharacterBase::Tick(float DeltaTime)
 //{
 //	Super::Tick(DeltaTime);
