@@ -8,6 +8,14 @@
 
 class USphereComponent;
 
+UENUM(BlueprintType)
+enum class EPotionType : uint8
+{
+	Health UMETA(DisplayName = "Health"),
+	Mana UMETA(DisplayName = "Mana"),
+	None UMETA(DisplayName = "None")
+};
+
 UCLASS()
 class AURA_API AAuraEffectActor : public AActor
 {
@@ -21,6 +29,9 @@ public:
 
 	UFUNCTION()
 	virtual void OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EPotionType PotionType;
 protected:
 
 	virtual void BeginPlay() override;
@@ -30,4 +41,6 @@ private:
 	TObjectPtr<USphereComponent> Sphere;
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UStaticMeshComponent> Mesh;
+	
+
 };
